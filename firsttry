@@ -1,0 +1,23 @@
+name: Lint & Test
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  lint-test:
+    runs-on: ubuntu-latest
+    env:
+      # List of licenses that are compatible with the MIT License and
+      # can be used in our project
+      ALLOWED_LICENSE: Apache Software License;
+        BSD License;
+        GNU Library or Lesser General Public License (LGPL);
+        ISC License (ISCL);
+        MIT License;
+        Mozilla Public License 2.0 (MPL 2.0);
+        Public Domain;
+        Python Software Foundation License
